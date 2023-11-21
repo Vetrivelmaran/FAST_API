@@ -1,4 +1,4 @@
-from click import DateTime
+# from click import DateTime
 from sqlalchemy import Column, Integer, String, DateTime, func
 from database import Base
 
@@ -13,3 +13,16 @@ class Student(Base):
     created_by = Column(Integer, server_default='1', nullable=False)
     updated_by = Column(Integer, server_default='1', nullable=False)
     deleted_at = Column(DateTime(timezone=True), nullable=True)
+    
+class Employee(Base):
+    __tablename__='employee'
+    
+    emp_id=Column(Integer,primary_key=True,index=True)
+    name=Column(String(50))
+    salary = Column(Integer)
+    gender_id=Column(Integer)
+class Gender(Base):
+    __tablename__='gender'
+    
+    gender_id=Column(Integer,primary_key=True)
+    gender=Column(String(10))

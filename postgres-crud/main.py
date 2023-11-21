@@ -60,7 +60,7 @@ async def update_stu(stu_id:int,student:StuBase,db:Session=db_dependency):
     
 @app.get('/getall')
 async def get_all_students(db: Session =db_dependency):
-    db_stu = db.query(models.Student).all()
+    db_stu = db.query(models.Student).filter(models.Student.deleted_at==None).all()
     return db_stu
 
 
